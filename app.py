@@ -228,7 +228,7 @@ def generate_brawl_stars_image(player_tag_input, language_input, club_name_input
         "bibi": "4bac0891-64a3-4018-bbd9-ee914e18c316",
         "bo": "79d125ba-9537-4a49-8654-9c41fe47a69c",
         "bonnie": "7fa1678f-2e01-454b-b24b-1a149990069c",
-        "brock": "8476e120-0331-4123-9782-12071e323bc1",
+        "brock": b227b6c4-3ef1-4339-b235-2db440d2e6fa",
         "bull": "ad92ebbe-0420-44c1-be2e-7546919bf6b0",
         "buster": "5c525bd0-3f57-479e-8b89-57865f9549f2",
         "buzz": "562e2a6a-5246-441f-9052-f63f1c40cba7",
@@ -406,7 +406,7 @@ def generate_brawl_stars_image(player_tag_input, language_input, club_name_input
             'starpowers': starpowers_owned,
         })
     
-    brawlers_final.sort(key=lambda x: x['rank'], reverse=True)
+     brawlers_final.sort(key=lambda x: x['trophies'], reverse=True)
     
     owned_count = sum(1 for b in brawlers_final if b['owned'])
     total_count = len(all_characters)
