@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Brawl Stars Image Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-6">Brawl Stars Image Generator</h1>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li class="text-red-500">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <form action="/" method="post" class="space-y-4">
+            <div>
+                <label for="player_tag" class="block font-medium">Player Tag:</label>
+                <input type="text" id="player_tag" name="player_tag" class="mt-1 block w-full p-2 border border-gray-300 rounded" required>
+            </div>
+            <div>
+                <label for="club_name" class="block font-medium">Club Name:</label>
+                <input type="text" id="club_name" name="club_name" class="mt-1 block w-full p-2 border border-gray-300 rounded" value="パムおば教">
+            </div>
+            <div>
+                <label for="language" class="block font-medium">Language:</label>
+                <select id="language" name="language" class="mt-1 block w-full p-2 border border-gray-300 rounded">
+                    <option value="0">English</option>
+                    <option value="1" selected>日本語</option>
+                    <option value="2">한국어</option>
+                    <option value="3">中文</option>
+                    <option value="4">Français</option>
+                    <option value="5">Español</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Generate Image</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
