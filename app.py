@@ -406,7 +406,7 @@ def generate_brawl_stars_image(player_tag_input, language_input, club_name_input
             'starpowers': starpowers_owned,
         })
     
-     brawlers_final.sort(key=lambda x: x['trophies'], reverse=True)
+    brawlers_final.sort(key=lambda x: x['trophies'], reverse=True)
     
     owned_count = sum(1 for b in brawlers_final if b['owned'])
     total_count = len(all_characters)
