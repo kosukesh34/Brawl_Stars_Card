@@ -7,12 +7,11 @@ from playwright.async_api import async_playwright
 import urllib.parse
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'  # 適宜変更してください
+app.secret_key = 'your_secret_key_here' 
 
 def generate_brawl_stars_image(player_tag_input, language_input, club_name_input):
-    # API キーとプレイヤータグの設定
     API_KEY = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImJiN2JmYWFkLWY1ZmYtNGFmNy1hNzdmLTcxN2QzZjQ0NjdjYyIsImlhdCI6MTczOTEwNjAwMiwic3ViIjoiZGV2ZWxvcGVyL2FlYTFmYjgzLTQxYmItOTk1Ni00N2M3LTEyOTY1MGQxMjM5NiIsInNjb3BlcyI6WyJicmF3bHN0YXJzIl0sImxpbWl0cyI6W3sidGllciI6ImRldmVsb3Blci9zaWx2ZXIiLCJ0eXBlIjoidGhyb3R0bGluZyJ9LHsiY2lkcnMiOlsiNDUuNzkuMjE4Ljc5Il0sInR5cGUiOiJjbGllbnQifV19.RE-DrAgWvlLG74XQXmq0Y6vEMU8FrECBiMR60K-MBq6ZADv6Lxhu9TyjQ9F36OoiVSAv79tMLF5CZTf5Ssce-A'
-    original_player_tag = player_tag_input  # ユーザー入力
+    original_player_tag = player_tag_input 
     encoded_player_tag = urllib.parse.quote(original_player_tag, safe='')
     headers = {
         'Authorization': f'Bearer {API_KEY}'
@@ -116,9 +115,7 @@ def generate_brawl_stars_image(player_tag_input, language_input, club_name_input
     player_data = response.json()
     brawler_data = {b['name']: b for b in player_data.get('brawlers', [])}
     
-    # Supercell ID（API から取得できなかった場合はデフォルト）
     supercell_id = player_data.get('supercellId', 'FranticHark')
-    # ランク情報（なければトロフィー数を仮置き）
     ranked_max = '6866'
     ranked_current = '762'
     
@@ -132,7 +129,7 @@ def generate_brawl_stars_image(player_tag_input, language_input, club_name_input
         range(30, 35): "#BF3243",
         range(35, 40): "#352773",
         range(40, 45): "#CAFDFE",
-        range(45, 51): "#FFFFFF"  # tier 50 まで対応
+        range(45, 51): "#FFFFFF"  
     }
     
     def get_background_color(rank):
@@ -213,7 +210,6 @@ def generate_brawl_stars_image(player_tag_input, language_input, club_name_input
     def generate_tier_url(tier_id, token):
         return f"{TIER_BASE_URL}{tier_id}.png{QUERY_STRING}{token}"
     
-    # brawler 用のトークン辞書（キャラクター画像用）
     BRAWLER_BASE_URL = "https://firebasestorage.googleapis.com/v0/b/idnect--com.firebasestorage.app/o/brawler%2F"
     
     BRAWLER_TOKENS = {
